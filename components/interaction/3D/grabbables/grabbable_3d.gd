@@ -151,7 +151,7 @@ func state_is_pull() -> bool:
 	return current_state == GrabState.Pull
 
 func state_is_neutral() -> bool:
-	return current_state == GrabState.Pull
+	return current_state == GrabState.Neutral
 
 func update_linear_velocity() -> void:
 	print("Object pulled. This is where the linear velocity would update.")
