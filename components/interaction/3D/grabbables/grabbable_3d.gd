@@ -18,7 +18,6 @@ class_name Grabbable3D extends RigidBody3D
 const MaximumTransparency: int = 255
 const GroupName: String = "grabbables"
 
-@warning_ignore("unused_signal")
 signal pulled(grabber: Node3D)
 @warning_ignore("unused_signal")
 signal throwed
@@ -145,6 +144,20 @@ func _remove_outline_shader() -> void:
 			OutlineMode.InvertedHull:
 				grabbable_mesh.material_overlay = null
 			
+func pull() -> void:
+	pulled.emit()
+
+func state_is_pull() -> bool:
+	return current_state == GrabState.Pull
+
+func state_is_neutral() -> bool:
+	return current_state == GrabState.Pull
+
+func update_linear_velocity() -> void:
+	print("Object pulled. This is where the linear velocity would update.")
+
+func update_angular_velocity() -> void:
+	print("Object pulled. This is where the angular velocity would update.")
 
 #region Signal callbacks
 func on_focused() -> void:
